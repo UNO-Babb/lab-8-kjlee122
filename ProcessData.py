@@ -20,15 +20,36 @@ def main():
     id = first[0] + last + idNum[idLen - 3: ]
     #print(id)
     return id
-  
+  def getMajor(major):
+    majorAbrv = major[0:3]
+    return majorAbrv
+  def getYear(year):
+    if year == "Freshman":
+      yearAbrv = "FR"
+    elif year == "Sophomore":
+      yearAbrv = "SO"
+    elif year == "Junior":
+      yearAbrv = "JR"
+    else:
+      yearAbrv = "SR"
+    return yearAbrv
+
+
+
+
+
   for line in inFile:
     data = line.split()
     first = data[0]
     last = data[1]
     idNum = data[3]
+    major = data[6]
+    year = data[5]
     #print(data)
     student_id = makeID(first, last, idNum)
-    output = last + "," + first + "," + student_id + "\n"
+    student_major = getMajor(major)
+    student_year = getYear(year)
+    output = last + "," + first + "," + student_id + "," + student_major + "-" + student_year + "\n"
     outFile.write(output)
   
 
